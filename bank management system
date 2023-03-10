@@ -1,0 +1,81 @@
+import java.util.Scanner;
+class Bank
+{
+    String name;
+    float bal;
+    static String b_name="NSSd Bank";
+    static
+    {
+         System.out.println("Welcome to the Bank "+b_name);
+    }
+    {
+        bal=500.0f;
+    }
+    Bank(String name)
+    {
+        this.name=name;
+    }
+    void details()
+    {
+        System.out.println("----------------------------------------------");
+        System.out.println("Name: "+name);
+        System.out.println("Balance Amount: "+bal);
+        System.out.println("----------------------------------------------");
+    }
+    void deposite(int amt)
+    {
+        bal+=amt;
+        System.out.println("Amount after deposit:"+bal);
+        details();
+    }
+    void Withdrawl(int amt)
+    {
+        if(bal-500<amt)
+        {
+            System.out.println("Insuffecient Balance");
+            details();
+        }
+        else
+        {
+             bal-=amt;
+             System.out.println("Amount after Withdrawl: "+bal);
+             details();
+        }
+    }
+    public static void main(String[] args)
+    {
+        Scanner sc=new Scanner(System.in);
+        System.out.print("Enter the name: ");
+        String name=sc.nextLine();
+        Bank b=new Bank(name);
+        while(true)
+        {
+            System.out.println("select the below options");
+            System.out.println("\n1.Deposite\n2.Withdrawl\n3.Enquiry\n4.Exit\n");
+            System.out.print("Enter the option: ");
+            int op=sc.nextInt();
+            switch(op)
+            {
+                case 1:
+                       System.out.print("Enter the amount: ");
+                       int amt=sc.nextInt();
+                       b.deposite(amt);
+                       break;
+                case 2:
+                       System.out.print("Enter the amount: ");
+                       amt=sc.nextInt();
+                       b.Withdrawl(amt);
+                       break;
+                case 3:
+                       b.details();
+                       break;
+                case 4:
+                       System.out.print("Thank you , Visit again");
+                       System.exit(0);
+                default: 
+                        System.out.println("enter valid option");
+                        break;
+            }
+        }
+    }
+}
